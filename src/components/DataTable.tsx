@@ -1,24 +1,18 @@
-import { ReactNode } from "react";
+import { DataTableProvider } from "../context/DataTableContext";
+import { DataType } from "../types";
+import Pagination from "./Pagination";
+import Search from "./Search";
+import SelectEntriesPerPage from "./SelectEntriesPerPage";
+import Table, { Column } from "./Table";
 
-type DataTableProps = TableProps & {
+export type DataTableProps = {
+  data: DataType[];
+  columns: Column[];
+  searchColumns?: string[] | "all";
   ordering?: boolean;
   search?: boolean;
   paginate?: boolean;
-  pageLength?: number;
-};
-
-type column = {
-  header: string;
-  accessor: string;
-};
-
-type data = {
-  id: number;
-} & Record<string, ReactNode>;
-
-type TableProps = {
-  data: data[];
-  columns: column[];
+  entriesPerPage?: number;
 };
 
 const DataTable = ({
@@ -26,76 +20,23 @@ const DataTable = ({
   columns,
   ordering = true,
   search = true,
+  searchColumns = "all",
   paginate = true,
-  pageLength = 10,
+  entriesPerPage = 10,
 }: DataTableProps) => {
-  if (!data.length) return false;
+  if (data.length === 0 || columns.length === 0) return false;
 
   return (
-    <div>
-      {ordering && <SelectEntriesPerPage />}
-      {search && <Search />}
-      <Table data={data} columns={columns} />
+    <DataTableProvider
+      initialData={data}
+      entriesPerPage={entriesPerPage}
+      paginate={paginate}
+    >
+      {paginate && <SelectEntriesPerPage />}
+      {search && <Search columns={searchColumns} />}
+      <Table columns={columns} ordering={ordering} />
       {paginate && <Pagination />}
-    </div>
-  );
-};
-
-const SelectEntriesPerPage = () => {
-  return (
-    <div>
-      <label htmlFor="entries">Entries per page</label>
-      <select id="entries">
-        <option value="10">10</option>
-        <option value="25">25</option>
-        <option value="50">50</option>
-        <option value="50">100</option>
-      </select>
-    </div>
-  );
-};
-
-const Table = ({ data, columns }: TableProps) => {
-  return (
-    <table>
-      <thead>
-        <tr>
-          {columns.map(({ header, accessor }) => (
-            <th key={accessor}>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((record) => {
-          const key = record.id;
-          return (
-            <tr key={key}>
-              {columns.map(({ accessor }) => (
-                <td key={`${key}_${accessor}`}>{record[accessor]}</td>
-              ))}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  );
-};
-
-const Search = () => {
-  return (
-    <div>
-      <label htmlFor="search">Search</label>
-      <input type="search" placeholder="Search" id="search" />
-    </div>
-  );
-};
-
-const Pagination = () => {
-  return (
-    <div>
-      <button>Previous</button>
-      <button>Next</button>
-    </div>
+    </DataTableProvider>
   );
 };
 
