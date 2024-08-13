@@ -6,6 +6,7 @@ import SelectEntriesPerPage from "./SelectEntriesPerPage";
 import Table, { Column } from "./Table";
 
 export type DataTableProps = {
+  title?: string;
   data: DataType[];
   columns: Column[];
   searchColumns?: string[] | "all";
@@ -16,6 +17,7 @@ export type DataTableProps = {
 };
 
 const DataTable = ({
+  title = "",
   data,
   columns,
   ordering = true,
@@ -34,7 +36,7 @@ const DataTable = ({
     >
       {paginate && <SelectEntriesPerPage />}
       {search && <Search columns={searchColumns} />}
-      <Table columns={columns} ordering={ordering} />
+      <Table caption={title} columns={columns} ordering={ordering} />
       {paginate && <Pagination />}
     </DataTableProvider>
   );

@@ -1,13 +1,13 @@
 export const exampleColumns = [
-  { header: "First Name", id: "firstName" },
-  { header: "Last Name", id: "lastName" },
-  { header: "Date of Birth", id: "dateOfBirth" },
-  { header: "Street", id: "street" },
-  { header: "city", id: "city" },
-  { header: "Zip Code", id: "zipCode" },
-  { header: "State", id: "state" },
-  { header: "Department", id: "department" },
-  { header: "Start Date", id: "startDate" },
+  { label: "First Name", id: "firstName" },
+  { label: "Last Name", id: "lastName" },
+  { label: "Date of Birth", id: "dateOfBirth" },
+  { label: "Street", id: "street" },
+  { label: "city", id: "city" },
+  { label: "Zip Code", id: "zipCode" },
+  { label: "State", id: "state" },
+  { label: "Department", id: "department" },
+  { label: "Start Date", id: "startDate" },
 ];
 
 export const exampleData = [
@@ -12218,23 +12218,23 @@ export const exampleData2 = [
 
 export const exampleColumns2 = [
   {
-    header: "First Name",
+    label: "First Name",
     id: "first_name",
   },
   {
-    header: "Last Name",
+    label: "Last Name",
     id: "last_name",
   },
   {
-    header: "Email",
+    label: "Email",
     id: "email",
   },
   {
-    header: "Gender",
+    label: "Gender",
     id: "gender",
   },
   {
-    header: "IP Address",
+    label: "IP Address",
     id: "ip_address",
   },
 ];

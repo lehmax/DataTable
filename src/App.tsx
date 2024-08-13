@@ -24,6 +24,7 @@ function App() {
   return (
     <ErrorBoundary fallbackRender={fallbackRender}>
       <DataTable
+        title="Employees"
         data={exampleData}
         columns={exampleColumns}
         searchColumns={["firstName", "lastName", "department"]}
