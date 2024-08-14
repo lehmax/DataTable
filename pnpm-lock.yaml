@@ -7,10 +7,17 @@ settings:
 importers:
 
   .:
+    dependencies:
+      lucide:
+        specifier: ^0.427.0
+        version: 0.427.0
+      lucide-react:
+        specifier: ^0.427.0
+        version: 0.427.0(react@18.3.1)
     devDependencies:
       '@eslint/js':
-        specifier: ^9.8.0
-        version: 9.8.0
+        specifier: ^9.9.0
+        version: 9.9.0
       '@testing-library/jest-dom':
         specifier: ^6.4.8
         version: 6.4.8
@@ -56,12 +63,6 @@ importers:
       jsdom:
         specifier: ^24.1.1
         version: 24.1.1
-      lucide:
-        specifier: ^0.427.0
-        version: 0.427.0
-      lucide-react:
-        specifier: ^0.427.0
-        version: 0.427.0(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -406,6 +407,10 @@ packages:
 
   '@eslint/js@9.8.0':
     resolution: {integrity: sha512-MfluB7EUfxXtv3i/++oh89uzAr4PDI4nn201hsp+qaXqsjAWzinlZEHEfPgAX4doIlKvPG/i0A9dpKxOLII8yA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/js@9.9.0':
+    resolution: {integrity: sha512-hhetes6ZHP3BlXLxmd8K2SNgkhNSi+UcecbnwWKwpP7kyi/uC75DJ1lOOBO3xrC4jyojtGE3YxKZPHfk4yrgug==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/object-schema@2.1.4':
@@ -964,7 +969,7 @@ packages:
     resolution: {integrity: sha512-7CEBgcMjVmitjYo5q8JTJVra6X5mQ20uTThdK+0kR7UEaDrAWEQcRiBtWJzga4eRpP6afNwwLsX2SET2JhVB1Q==}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   confbox@0.1.7:
     resolution: {integrity: sha512-uJcB/FKZtBMCJpK8MQji6bJHgu1tixKPxRLeGkNzBoOZzpnZUJm0jm2/sBDWcuBx1dYgxV4JU+g5hmNxCyAmdA==}
@@ -2341,6 +2346,8 @@ snapshots:
       - supports-color
 
   '@eslint/js@9.8.0': {}
+
+  '@eslint/js@9.9.0': {}
 
   '@eslint/object-schema@2.1.4': {}
 
