@@ -13,7 +13,7 @@ const Search = ({ columns }: SearchProps) => {
     <form
       role="search"
       onSubmit={(e) => e.preventDefault()}
-      className="searchform"
+      className="dt-search"
     >
       <label htmlFor={id}>Search</label>
       <input
@@ -22,6 +22,7 @@ const Search = ({ columns }: SearchProps) => {
         name="search"
         id={id}
         role="search"
+        className="dt-searchinput"
         onChange={(event) => search(event.target.value)}
       />
     </form>

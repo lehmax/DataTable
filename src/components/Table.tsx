@@ -1,7 +1,7 @@
-import { ArrowDown, ArrowUp } from "lucide-react";
-import { useDataTableContext } from "../hooks/useDataTableContext";
+import { ArrowUp } from "lucide-react";
 import useSort from "../hooks/useSort";
 
+import { useDataTableContext } from "../hooks/useDataTableContext";
 import "../styles/datatable.scss";
 
 type TableProps = {
@@ -32,17 +32,21 @@ const Head = ({ columns, ordering = true }: HeadProps) => {
       <tr role="row">
         {columns.map(({ label, id }) => {
           return ordering ? (
-            <th role="columnheader" key={id} onClick={() => onClick(id)}>
-              {sortColumn.colId === id && (
+            <th
+              className="dt-orderable"
+              role="columnheader"
+              key={id}
+              onClick={() => onClick(id)}
+              aria-sort={
+                sortColumn.colId === id ? sortColumn.direction : "none"
+              }
+            >
+              <div>
                 <span>
-                  {sortColumn.direction === "ascending" ? (
-                    <ArrowUp />
-                  ) : (
-                    <ArrowDown />
-                  )}
+                  <ArrowUp size={16} className="order-icon" />
                 </span>
-              )}
-              <span role="button">{label}</span>
+                <span role="button">{label}</span>
+              </div>
             </th>
           ) : (
             <th key={id}>{label}</th>

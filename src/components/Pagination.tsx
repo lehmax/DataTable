@@ -23,12 +23,12 @@ const Pagination = () => {
   const isEndPage = currentPage === totalPages;
 
   return (
-    <div className="pagination">
-      <span className="pagination-resume">
+    <div className="dt-pagination">
+      <span className="dt-pagination-resume">
         Showing {start} to {end} of {total} entries
       </span>
       <nav
-        className="pagination-navigation"
+        className="dt-pagination-navigation"
         role="navigation"
         aria-label="Pagination"
       >
@@ -43,7 +43,7 @@ const Pagination = () => {
               aria-label="Go to first page"
               aria-disabled={currentPage === 1 ? "true" : "false"}
             >
-              <ChevronsLeft aria-hidden="true" />
+              <ChevronsLeft aria-hidden="true" size={16} />
             </a>
           </li>
           <li>
@@ -56,7 +56,7 @@ const Pagination = () => {
               aria-label="Go to previous page"
               aria-disabled={currentPage === 1 ? "true" : "false"}
             >
-              <ChevronLeft aria-hidden="true" />
+              <ChevronLeft aria-hidden="true" size={16} />
             </a>
           </li>
           {totalPages > 5 && !isFirstPage && (
@@ -80,7 +80,7 @@ const Pagination = () => {
               aria-label="Go to next page"
               aria-disabled={currentPage === totalPages ? "true" : "false"}
             >
-              <ChevronRight aria-hidden="true" />
+              <ChevronRight aria-hidden="true" size={16} />
             </a>
           </li>
           <li>
@@ -93,7 +93,7 @@ const Pagination = () => {
               aria-label="Go to last page"
               aria-disabled={currentPage === totalPages ? "true" : "false"}
             >
-              <ChevronsRight aria-hidden="true" />
+              <ChevronsRight aria-hidden="true" size={16} />
             </a>
           </li>
         </ul>

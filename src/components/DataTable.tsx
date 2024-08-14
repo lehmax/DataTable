@@ -34,8 +34,10 @@ const DataTable = ({
       entriesPerPage={entriesPerPage}
       paginate={paginate}
     >
-      {paginate && <SelectEntriesPerPage />}
-      {search && <Search columns={searchColumns} />}
+      <div className="dt-inputs">
+        {paginate && <SelectEntriesPerPage />}
+        {search && <Search columns={searchColumns} />}
+      </div>
       <Table caption={title} columns={columns} ordering={ordering} />
       {paginate && <Pagination />}
     </DataTableProvider>
