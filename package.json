@@ -1,9 +1,9 @@
 {
   "name": "@lehmax/datatable",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.1",
   "type": "module",
-  "private": false,
   "main": "dist/main.js",
+  "module": "dist/main.esm.js",
   "files": [
     "dist"
   ],
