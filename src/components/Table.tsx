@@ -2,6 +2,8 @@ import { ArrowDown, ArrowUp } from "lucide-react";
 import { useDataTableContext } from "../hooks/useDataTableContext";
 import useSort from "../hooks/useSort";
 
+import "../styles/datatable.scss";
+
 type TableProps = {
   columns: Column[];
   caption?: string;
@@ -74,7 +76,7 @@ const Body = ({ columns }: { columns: Column[] }) => {
 
 const Table = ({ columns, caption = "", ordering = true }: TableProps) => {
   return (
-    <table role="grid">
+    <table role="grid" className="datatable">
       {caption.length > 0 ? <caption>{caption}</caption> : null}
       <Head columns={columns} ordering={ordering} />
       <Body columns={columns} />

@@ -10,7 +10,11 @@ const Search = ({ columns }: SearchProps) => {
   const id = useId();
 
   return (
-    <form role="search" onSubmit={(e) => e.preventDefault()}>
+    <form
+      role="search"
+      onSubmit={(e) => e.preventDefault()}
+      className="searchform"
+    >
       <label htmlFor={id}>Search</label>
       <input
         type="search"

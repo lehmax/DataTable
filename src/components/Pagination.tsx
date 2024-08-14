@@ -23,11 +23,15 @@ const Pagination = () => {
   const isEndPage = currentPage === totalPages;
 
   return (
-    <div>
-      <span>
+    <div className="pagination">
+      <span className="pagination-resume">
         Showing {start} to {end} of {total} entries
       </span>
-      <nav role="navigation" aria-label="Pagination">
+      <nav
+        className="pagination-navigation"
+        role="navigation"
+        aria-label="Pagination"
+      >
         <ul>
           <li>
             <a

@@ -9,7 +9,7 @@ const SelectEntriesPerPage = () => {
   };
 
   return (
-    <div>
+    <div className="entries-selector">
       <label htmlFor="entries">Entries per page</label>
       <select id="entries" onChange={onChange}>
         {pagination.entriesPerPagesRange?.map((entriesPerPages: number) => (
