@@ -18,6 +18,7 @@ export type DataTableContextType = {
     entriesPerPagesRange: number[];
     entriesPerPage: number;
     currentPage: number;
+    totalPages: number;
     entries: DataType[];
     paginationButtons: JSX.Element[];
     paginationInformations: {
@@ -43,6 +44,7 @@ export const DataTableContext = createContext<DataTableContextType>({
     entriesPerPagesRange: [10, 25, 50, 100],
     entriesPerPage: 10,
     currentPage: 1,
+    totalPages: 1,
     entries: [],
     paginationButtons: [],
     paginationInformations: {

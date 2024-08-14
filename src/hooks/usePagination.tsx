@@ -37,13 +37,18 @@ const usePagination = (
   const paginationButtons = Array.from(
     { length: endPageBtn - startPageBtn + 1 },
     (_, index) => (
-      <button
-        key={startPageBtn + index}
-        onClick={() => setCurrentPage(startPageBtn + index)}
-        disabled={currentPage === startPageBtn + index}
-      >
-        {startPageBtn + index}
-      </button>
+      <li key={startPageBtn + index}>
+        <a
+          href="#"
+          aria-current={currentPage === startPageBtn + index}
+          onClick={(event) => {
+            event.preventDefault();
+            setCurrentPage(startPageBtn + index);
+          }}
+        >
+          {startPageBtn + index}
+        </a>
+      </li>
     )
   );
 
@@ -61,6 +66,7 @@ const usePagination = (
     currentPage,
     entriesPerPage,
     paginationButtons,
+    totalPages,
     paginationInformations: {
       start: totalEntries !== 0 ? startIndex + 1 : 0,
       end: lastIndex < totalEntries ? lastIndex : totalEntries,

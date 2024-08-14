@@ -8,8 +8,19 @@ import { useDataTableContext } from "../hooks/useDataTableContext";
 
 const Pagination = () => {
   const { pagination } = useDataTableContext();
-
-  const { start, end, total } = pagination.paginationInformations;
+  const {
+    currentPage,
+    totalPages,
+    paginationInformations,
+    firstPage,
+    prevPage,
+    lastPage,
+    nextPage,
+    paginationButtons,
+  } = pagination;
+  const { start, end, total } = paginationInformations;
+  const isFirstPage = currentPage === 1;
+  const isEndPage = currentPage === totalPages;
 
   return (
     <div>
@@ -23,11 +34,11 @@ const Pagination = () => {
               href="#first"
               onClick={(event) => {
                 event.preventDefault();
-                pagination.firstPage();
+                firstPage();
               }}
-              aria-disabled="true"
+              aria-disabled={currentPage === 1 ? "true" : "false"}
             >
-              <ChevronsLeft />
+              <ChevronsLeft aria-hidden="true" />
             </a>
           </li>
           <li>
@@ -35,23 +46,34 @@ const Pagination = () => {
               href="#previous"
               onClick={(event) => {
                 event.preventDefault();
-                pagination.prevPage();
+                prevPage();
               }}
-              aria-disabled="true"
+              aria-disabled={currentPage === 1 ? "true" : "false"}
             >
-              <ChevronLeft />
+              <ChevronLeft aria-hidden="true" />
             </a>
           </li>
-          {pagination.paginationButtons}
+          {totalPages > 5 && !isFirstPage && (
+            <li>
+              <span>...</span>
+            </li>
+          )}
+          {paginationButtons}
+          {totalPages > 5 && !isEndPage && (
+            <li>
+              <span>...</span>
+            </li>
+          )}
           <li>
             <a
               href="#next"
               onClick={(event) => {
                 event.preventDefault();
-                pagination.nextPage();
+                nextPage();
               }}
+              aria-disabled={currentPage === totalPages ? "true" : "false"}
             >
-              <ChevronRight />
+              <ChevronRight aria-hidden="true" />
             </a>
           </li>
           <li>
@@ -59,10 +81,11 @@ const Pagination = () => {
               href="#last"
               onClick={(event) => {
                 event.preventDefault();
-                pagination.lastPage();
+                lastPage();
               }}
+              aria-disabled={currentPage === totalPages ? "true" : "false"}
             >
-              <ChevronsRight />
+              <ChevronsRight aria-hidden="true" />
             </a>
           </li>
         </ul>
