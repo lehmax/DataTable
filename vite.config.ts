@@ -9,12 +9,15 @@ export default defineConfig({
   plugins: [react(), libInjectCss(), dts({ include: ["lib"] })],
   build: {
     copyPublicDir: false,
+    sourcemap: true,
+    emptyOutDir: true,
     rollupOptions: {
       external: ["react", "react/jsx-runtime"],
     },
     lib: {
-      entry: resolve(__dirname, "lib/main.ts"),
+      entry: resolve(__dirname, "lib/index.ts"),
       formats: ["es"],
+      fileName: (format) => `index.${format}.js`,
     },
   },
 });

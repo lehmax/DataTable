@@ -1,22 +1,31 @@
 {
   "name": "@lehmax/datatable",
   "author": "Maxime Leherquer",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "A simple datatable for React",
   "keywords": [
     "react",
     "datatable",
     "table"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lehmax/DataTable"
   },
   "type": "module",
   "license": "MIT",
-  "main": "dist/datatable.js",
-  "module": "dist/datatable.esm.js",
-  "types": "dist/types/main.d.ts",
+  "module": "dist/index.es.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/index.css"
+  },
   "files": [
     "dist"
   ],

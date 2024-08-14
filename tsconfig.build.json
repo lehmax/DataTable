@@ -1,4 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["lib"]
+  "include": ["lib"],
+  "typeRoots": ["./dist/index.d.ts", "node_modules/@types"]
 }
