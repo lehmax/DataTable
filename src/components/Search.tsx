@@ -10,16 +10,17 @@ const Search = ({ columns }: SearchProps) => {
   const id = useId();
 
   return (
-    <div>
+    <form role="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id}>Search</label>
       <input
         type="search"
         placeholder="Search"
         name="search"
         id={id}
+        role="search"
         onChange={(event) => search(event.target.value)}
       />
-    </div>
+    </form>
   );
 };
 

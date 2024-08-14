@@ -16,20 +16,56 @@ const Pagination = () => {
       <span>
         Showing {start} to {end} of {total} entries
       </span>
-      <nav>
-        <button onClick={pagination.firstPage}>
-          <ChevronsLeft />
-        </button>
-        <button onClick={pagination.prevPage}>
-          <ChevronLeft />
-        </button>
-        {pagination.paginationButtons}
-        <button onClick={pagination.nextPage}>
-          <ChevronRight />
-        </button>
-        <button onClick={pagination.lastPage}>
-          <ChevronsRight />
-        </button>
+      <nav role="navigation" aria-label="Pagination">
+        <ul>
+          <li>
+            <a
+              href="#first"
+              onClick={(event) => {
+                event.preventDefault();
+                pagination.firstPage();
+              }}
+              aria-disabled="true"
+            >
+              <ChevronsLeft />
+            </a>
+          </li>
+          <li>
+            <a
+              href="#previous"
+              onClick={(event) => {
+                event.preventDefault();
+                pagination.prevPage();
+              }}
+              aria-disabled="true"
+            >
+              <ChevronLeft />
+            </a>
+          </li>
+          {pagination.paginationButtons}
+          <li>
+            <a
+              href="#next"
+              onClick={(event) => {
+                event.preventDefault();
+                pagination.nextPage();
+              }}
+            >
+              <ChevronRight />
+            </a>
+          </li>
+          <li>
+            <a
+              href="#last"
+              onClick={(event) => {
+                event.preventDefault();
+                pagination.lastPage();
+              }}
+            >
+              <ChevronsRight />
+            </a>
+          </li>
+        </ul>
       </nav>
     </div>
   );

@@ -1,34 +1,97 @@
-import { render, screen } from "@testing-library/react";
-import { expect, test } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import DataTable from "../src/components/DataTable";
+import { exampleColumns, exampleData } from "../src/data";
 
-test("renders DataTable component", () => {
-  const data = [
-    { id: 1, name: "John Doe", age: 25 },
-    { id: 2, name: "Jane Smith", age: 30 },
-  ];
+describe("Test DataTable Component", () => {
+  describe("Given I use DataTable component with data, columns, title and default options", () => {
+    beforeAll(() => {
+      render(
+        <DataTable
+          title="Title Example"
+          data={exampleData.slice(0, 20)}
+          columns={exampleColumns}
+        />
+      );
+    });
 
-  const columns = [
-    { id: "id", label: "ID" },
-    { id: "name", label: "Name" },
-    { id: "age", label: "Age" },
-  ];
+    afterAll(() => {
+      cleanup();
+    });
 
-  const cellSelector = { selector: "td" };
+    it("should render the DataTable component", () => {
+      expect(screen.getByRole("grid")).toBeInTheDocument();
+    });
 
-  render(<DataTable data={data} columns={columns} />);
+    it.each(exampleColumns)(
+      "should render the table headers : $label",
+      ({ label }) => {
+        expect(screen.getByText(label)).toBeInTheDocument();
+      }
+    );
 
-  // Assert that the DataTable component is rendered
-  expect(screen.getByRole("grid")).toBeInTheDocument();
+    it.each(exampleData.slice(0, 1))(
+      "should render the table row : $firstName, $lastName",
+      ({ firstName, lastName }) => {
+        expect(screen.getByText(firstName)).toBeInTheDocument();
+        expect(screen.getByText(lastName)).toBeInTheDocument();
+      }
+    );
 
-  // Assert that the table headers are rendered
-  expect(screen.getByText("Name")).toBeInTheDocument();
-  expect(screen.getByText("Age")).toBeInTheDocument();
+    it("should render a search input", () => {
+      expect(
+        screen.getByText("Search", { selector: "label" })
+      ).toBeInTheDocument();
+    });
 
-  // Assert that the table rows are rendered
-  expect(screen.getByText("John Doe", cellSelector)).toBeInTheDocument();
-  expect(screen.getByText("25", cellSelector)).toBeInTheDocument();
+    it("should render an items per page selector", () => {
+      expect(
+        screen.getByText("Entries per page", { selector: "label" })
+      ).toBeInTheDocument();
+    });
 
-  expect(screen.getByText("Jane Smith", cellSelector)).toBeInTheDocument();
-  expect(screen.getByText("30", cellSelector)).toBeInTheDocument();
+    it("should render a pagination", () => {
+      expect(screen.getByRole("navigation")).toBeInTheDocument();
+    });
+
+    it("should render a caption", () => {
+      expect(
+        screen.getByText("Title Example", { selector: "caption" })
+      ).toBeInTheDocument();
+    });
+  });
+
+  describe("Given I use DataTable component without extra features", () => {
+    beforeAll(() => {
+      render(
+        <DataTable
+          data={exampleData.slice(0, 20)}
+          columns={exampleColumns}
+          paginate={false}
+          search={false}
+          ordering={false}
+        />
+      );
+    });
+
+    afterAll(() => {
+      cleanup();
+    });
+
+    it("should not render a search input", () => {
+      expect(
+        screen.queryByText("Search", { selector: "label" })
+      ).not.toBeInTheDocument();
+    });
+
+    it("should not render an items per page selector", () => {
+      expect(
+        screen.queryByText("Entries per page", { selector: "label" })
+      ).not.toBeInTheDocument();
+    });
+
+    it("should not render a pagination", () => {
+      expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
+    });
+  });
 });
