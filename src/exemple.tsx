@@ -1,11 +1,13 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { ErrorBoundary } from "react-error-boundary";
-import DataTable from "./components/DataTable";
+import DataTable from "../lib/components/DataTable";
 import {
   exampleColumns,
   exampleColumns2,
   exampleData,
   exampleData2,
-} from "./data";
+} from "../test/data";
 
 type errorType = {
   message: string;
@@ -20,8 +22,8 @@ function fallbackRender({ error }: { error: errorType }) {
   );
 }
 
-function App() {
-  return (
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
     <ErrorBoundary fallbackRender={fallbackRender}>
       <DataTable
         title="Employees"
@@ -37,7 +39,5 @@ function App() {
         paginate={false}
       />
     </ErrorBoundary>
-  );
-}
-
-export default App;
+  </StrictMode>
+);
