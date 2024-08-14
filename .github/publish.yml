@@ -26,6 +26,6 @@ jobs:
     - name: Build the project
       run: pnpm run build
     - name: Publish to npm
-      run: npm publish
+      run: pnpm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
