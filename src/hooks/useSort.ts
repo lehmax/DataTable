@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { DataType } from "../types";
+import { useEffect, useState } from "react";
 import { useDataTableContext } from "./useDataTableContext";
 
 type SortDirection = "ascending" | "descending" | "none";
@@ -11,15 +10,16 @@ type SortColumn = {
 
 const useSort = () => {
   const { setLocalData, localData } = useDataTableContext();
+
   const [sortColumn, setSortColumn] = useState<SortColumn>({
     colId: "",
     direction: "none",
   });
 
-  const sortDataByColumn = (sortColumn: SortColumn, data: DataType[]) => {
+  const sortDataByColumn = (sortColumn: SortColumn) => {
     if (!sortColumn.colId || sortColumn.direction === "none") return;
 
-    const sortedData = [...data].sort((a, b) => {
+    const sortedData = [...localData].sort((a, b) => {
       const valueA = a[sortColumn.colId] as string;
       const valueB = b[sortColumn.colId] as string;
 
@@ -48,15 +48,14 @@ const useSort = () => {
           sortColumn.direction === "ascending" ? "descending" : direction;
       }
 
-      const newSortColumn = { colId: id, direction };
-
-      if (localData) {
-        sortDataByColumn(newSortColumn, localData);
-      }
-
-      return newSortColumn;
+      return { colId: id, direction };
     });
   };
+
+  useEffect(() => {
+    sortDataByColumn(sortColumn);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortColumn]);
 
   return { sortColumn, handleSort };
 };
