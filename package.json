@@ -28,7 +28,7 @@
     "coverage": "vitest run --coverage",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "vite build"
   },
   "dependencies": {
     "lucide": "^0.427.0",
