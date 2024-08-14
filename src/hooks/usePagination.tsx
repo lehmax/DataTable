@@ -41,6 +41,7 @@ const usePagination = (
         <a
           href="#"
           aria-current={currentPage === startPageBtn + index}
+          aria-label={`Go to page ${startPageBtn + index}`}
           onClick={(event) => {
             event.preventDefault();
             setCurrentPage(startPageBtn + index);

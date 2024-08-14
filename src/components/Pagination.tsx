@@ -36,6 +36,7 @@ const Pagination = () => {
                 event.preventDefault();
                 firstPage();
               }}
+              aria-label="Go to first page"
               aria-disabled={currentPage === 1 ? "true" : "false"}
             >
               <ChevronsLeft aria-hidden="true" />
@@ -48,6 +49,7 @@ const Pagination = () => {
                 event.preventDefault();
                 prevPage();
               }}
+              aria-label="Go to previous page"
               aria-disabled={currentPage === 1 ? "true" : "false"}
             >
               <ChevronLeft aria-hidden="true" />
@@ -71,6 +73,7 @@ const Pagination = () => {
                 event.preventDefault();
                 nextPage();
               }}
+              aria-label="Go to next page"
               aria-disabled={currentPage === totalPages ? "true" : "false"}
             >
               <ChevronRight aria-hidden="true" />
@@ -83,6 +86,7 @@ const Pagination = () => {
                 event.preventDefault();
                 lastPage();
               }}
+              aria-label="Go to last page"
               aria-disabled={currentPage === totalPages ? "true" : "false"}
             >
               <ChevronsRight aria-hidden="true" />
