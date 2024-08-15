@@ -1,7 +1,7 @@
 {
   "name": "@lehmax/datatable",
   "author": "Maxime Leherquer",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "A simple datatable for React",
   "keywords": [
     "react",
