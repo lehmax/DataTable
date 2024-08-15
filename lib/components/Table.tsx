@@ -1,4 +1,4 @@
-import { ArrowUp } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import useSort from "../hooks/useSort";
 
 import { useDataTableContext } from "../hooks/useDataTableContext";
@@ -21,7 +21,7 @@ type HeadProps = {
 };
 
 const Head = ({ columns, ordering = true }: HeadProps) => {
-  const { sortColumn, handleSort } = useSort();
+  const { sortColumn, handleSort } = useSort(columns);
 
   const onClick = (id: string) => {
     handleSort(id);
@@ -42,10 +42,10 @@ const Head = ({ columns, ordering = true }: HeadProps) => {
               }
             >
               <div>
-                <span>
-                  <ArrowUp size={16} className="order-icon" />
-                </span>
                 <span role="button">{label}</span>
+                <span>
+                  <ArrowDown size={16} className="order-icon" />
+                </span>
               </div>
             </th>
           ) : (
@@ -78,12 +78,25 @@ const Body = ({ columns }: { columns: Column[] }) => {
   );
 };
 
+const Footer = ({ columns }: { columns: Column[] }) => {
+  return (
+    <tfoot role="rowgroup">
+      <tr role="row">
+        {columns.map(({ label, id }) => (
+          <th key={id}>{label}</th>
+        ))}
+      </tr>
+    </tfoot>
+  );
+};
+
 const Table = ({ columns, caption = "", ordering = true }: TableProps) => {
   return (
     <table role="grid" className="datatable">
       {caption.length > 0 ? <caption>{caption}</caption> : null}
       <Head columns={columns} ordering={ordering} />
       <Body columns={columns} />
+      <Footer columns={columns} />
     </table>
   );
 };

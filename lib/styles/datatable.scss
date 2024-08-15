@@ -31,21 +31,30 @@ table.datatable {
     text-align: left;
   }
 
+  thead {
+    tr {
+      border-bottom: 2px solid var(--color-border-grey);
+    }
+  }
+
+  tfoot {
+    tr {
+      border-top: 2px solid var(--color-border-grey);
+    }
+  }
+
   th {
-    background-color: var(--color-light-grey);
     color: var(--color-text);
-    font-weight: bold;
-    text-transform: uppercase;
-    border-bottom: 2px solid var(--color-border-grey);
+    font-weight: 600;
   }
 
   tbody {
     tr {
       &:nth-child(odd) {
-        background-color: var(--color-white);
+        background-color: var(--color-light-grey);
       }
       &:nth-child(even) {
-        background-color: var(--color-light-grey);
+        background-color: var(--color-white);
       }
 
       &:hover {
@@ -53,7 +62,7 @@ table.datatable {
       }
     }
 
-    td {
+    tr {
       border-bottom: 1px solid var(--color-border-grey);
     }
   }
@@ -65,6 +74,7 @@ table.datatable {
 
   > div {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
   }
@@ -93,7 +103,6 @@ table.datatable {
   }
 
   .order-icon {
-    margin-left: 0.5rem;
     opacity: 0;
     transition: transform 0.2s ease-in-out;
   }

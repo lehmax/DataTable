@@ -38,6 +38,13 @@ createRoot(document.getElementById("root")!).render(
         ordering={false}
         paginate={false}
       />
+      <DataTable
+        data={[]}
+        columns={[]}
+        search={true}
+        ordering={false}
+        paginate={false}
+      />
     </ErrorBoundary>
   </StrictMode>
 );

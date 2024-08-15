@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Column } from "../components/Table";
+import { sortCollection } from "../utils/sort";
 import { useDataTableContext } from "./useDataTableContext";
 
 type SortDirection = "ascending" | "descending" | "none";
@@ -8,54 +10,27 @@ type SortColumn = {
   direction: SortDirection;
 };
 
-const useSort = () => {
+const useSort = (columns: Column[]) => {
   const { setLocalData, localData } = useDataTableContext();
 
+  const firstColumn = columns[0];
   const [sortColumn, setSortColumn] = useState<SortColumn>({
-    colId: "",
-    direction: "none",
+    colId: localData.length > 0 ? firstColumn.id : "",
+    direction: "ascending",
   });
 
-  const sortDataByColumn = (sortColumn: SortColumn) => {
-    if (!sortColumn.colId || sortColumn.direction === "none") return;
+  const handleSort = (id: string) => {
+    let direction: SortDirection = "ascending";
 
-    const sortedData = [...localData].sort((a, b) => {
-      const valueA = a[sortColumn.colId] as string;
-      const valueB = b[sortColumn.colId] as string;
+    if (sortColumn.colId === id && sortColumn.direction !== "none") {
+      direction =
+        sortColumn.direction === "ascending" ? "descending" : direction;
+    }
 
-      if (!valueA && !valueB) return 0;
-
-      return sortColumn.direction === "ascending"
-        ? valueA.localeCompare(valueB, "en", {
-            numeric: true,
-            sensitivity: "base",
-          })
-        : valueB.localeCompare(valueA, "en", {
-            numeric: true,
-            sensitivity: "base",
-          });
-    });
-
+    setSortColumn({ colId: id, direction });
+    const sortedData = sortCollection(localData, id, direction);
     setLocalData(sortedData);
   };
-
-  const handleSort = (id: string) => {
-    setSortColumn((prevSort) => {
-      let direction: SortDirection = "ascending";
-
-      if (prevSort.colId === id && prevSort.direction !== "none") {
-        direction =
-          sortColumn.direction === "ascending" ? "descending" : direction;
-      }
-
-      return { colId: id, direction };
-    });
-  };
-
-  useEffect(() => {
-    sortDataByColumn(sortColumn);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortColumn]);
 
   return { sortColumn, handleSort };
 };

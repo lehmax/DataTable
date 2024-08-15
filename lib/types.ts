@@ -1,3 +1,4 @@
 export type DataType = {
   id: number;
-} & Record<string, string | number>;
+  [key: string]: string | number;
+};
