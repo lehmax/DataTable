@@ -1,5 +1,8 @@
+import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen } from "@testing-library/react";
+import React from "react";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+
 import DataTable from "../lib/components/DataTable";
 import { exampleColumns, exampleData } from "./data";
 
@@ -20,13 +23,14 @@ describe("Test DataTable Component", () => {
     });
 
     it("should render the DataTable component", () => {
-      expect(screen.getByRole("grid")).toBeInTheDocument();
+      expect(screen.getByRole("grid") as HTMLElement).toBeInTheDocument();
     });
 
     it.each(exampleColumns)(
       "should render the table headers : $label",
       ({ label }) => {
-        expect(screen.getByText(label)).toBeInTheDocument();
+        const items = screen.getAllByText(label);
+        expect(items).toHaveLength(2);
       }
     );
 

@@ -5,7 +5,6 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -13,21 +12,14 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["@testing-library/jest-dom"],
+    "types": ["jest", "@testing-library/jest-dom"],
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true
   },
-  "include": [
-    "src",
-    "./vitest.setup.ts",
-    "lib/components",
-    "lib/context",
-    "lib/hooks",
-    "test/data.ts",
-    "lib/types.ts"
-  ],
+  "include": ["src", "lib", "./vitest.setup.ts", "test/data.ts"],
   "exclude": ["node_modules"]
 }

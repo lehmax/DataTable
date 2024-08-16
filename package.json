@@ -1,7 +1,7 @@
 {
   "name": "@lehmax/datatable",
   "author": "Maxime Leherquer",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11  ",
   "description": "A simple datatable for React",
   "keywords": [
     "react",
@@ -53,6 +53,7 @@
     "@testing-library/react": "^16.0.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.12",
     "@types/node": "^22.3.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

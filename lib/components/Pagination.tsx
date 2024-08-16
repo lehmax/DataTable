@@ -19,8 +19,8 @@ const Pagination = () => {
     paginationButtons,
   } = pagination;
   const { start, end, total } = paginationInformations;
-  const isFirstPage = currentPage === 1;
-  const isEndPage = currentPage === totalPages;
+  const isDotBegin = totalPages > 5 && currentPage > 3;
+  const isDotEnd = totalPages > 5 && currentPage < totalPages - 2;
 
   return (
     <div className="dt-pagination">
@@ -59,13 +59,13 @@ const Pagination = () => {
               <ChevronLeft aria-hidden="true" />
             </a>
           </li>
-          {totalPages > 5 && !isFirstPage && (
+          {isDotBegin && (
             <li>
               <span>...</span>
             </li>
           )}
           {paginationButtons}
-          {totalPages > 5 && !isEndPage && (
+          {isDotEnd && (
             <li>
               <span>...</span>
             </li>

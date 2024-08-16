@@ -3,7 +3,7 @@ export const exampleColumns = [
   { label: "Last Name", id: "lastName" },
   { label: "Date of Birth", id: "dateOfBirth" },
   { label: "Street", id: "street" },
-  { label: "city", id: "city" },
+  { label: "City", id: "city" },
   { label: "Zip Code", id: "zipCode" },
   { label: "State", id: "state" },
   { label: "Department", id: "department" },
