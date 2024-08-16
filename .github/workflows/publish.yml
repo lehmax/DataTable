@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  build-and-publish:
+  publish:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -29,9 +29,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Build the project
-        run: pnpm run build
 
       - name: Publish to npm
         run: pnpm publish --access public --no-git-checks
