@@ -10,11 +10,7 @@ const Search = ({ columns }: SearchProps) => {
   const id = useId();
 
   return (
-    <form
-      role="search"
-      onSubmit={(e) => e.preventDefault()}
-      className="dt-search"
-    >
+    <div className="dt-search">
       <label htmlFor={id}>Search</label>
       <input
         type="search"
@@ -25,7 +21,7 @@ const Search = ({ columns }: SearchProps) => {
         className="dt-searchinput"
         onChange={(event) => search(event.target.value)}
       />
-    </form>
+    </div>
   );
 };
 

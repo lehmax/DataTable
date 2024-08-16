@@ -44,7 +44,7 @@ const DataTable = ({
       entriesPerPage={entriesPerPage}
       paginate={paginate}
     >
-      <div className="dt-wrapper">
+      <div>
         <div className="dt-inputs">
           {paginate && <SelectEntriesPerPage />}
           {search && <Search columns={searchColumns} />}

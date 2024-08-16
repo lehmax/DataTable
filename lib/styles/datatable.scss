@@ -11,6 +11,10 @@
   --table-font-size: 0.875rem;
 }
 
+.dt-wrapper {
+  overflow-x: auto;
+}
+
 table.datatable {
   width: 100%;
   background-color: var(--color-white);
@@ -110,7 +114,7 @@ table.datatable {
 
 .dt-searchinput,
 .dt-entries-number select {
-  padding: 8px 12px;
+  padding: 8px;
   border: 1px solid var(--color-border-grey);
   border-radius: 4px;
   font-size: var(--table-font-size);
@@ -122,6 +126,10 @@ table.datatable {
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
+
+  > input {
+    width: 100%;
+  }
 }
 
 .dt-entries-number {
@@ -149,6 +157,11 @@ table.datatable {
   flex-direction: row;
   justify-content: space-between;
   padding: 12px 0;
+
+  @media (width <= 996px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .dt-pagination-resume {
@@ -167,10 +180,10 @@ table.datatable {
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
+    padding: 0;
 
-    li {
-      padding: 0;
-      margin: 0;
+    @media (width <= 996px) {
+      flex-wrap: wrap;
     }
 
     a {
@@ -186,6 +199,11 @@ table.datatable {
       color: var(--color-text);
       text-decoration: none;
       font-weight: 500;
+
+      @media (width <= 996px) {
+        width: 20px;
+        height: 20px;
+      }
 
       &[aria-current="page"] {
         background-color: var(--color-primary);

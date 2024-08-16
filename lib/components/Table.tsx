@@ -92,12 +92,14 @@ const Footer = ({ columns }: { columns: Column[] }) => {
 
 const Table = ({ columns, caption = "", ordering = true }: TableProps) => {
   return (
-    <table role="grid" className="datatable">
-      {caption.length > 0 ? <caption>{caption}</caption> : null}
-      <Head columns={columns} ordering={ordering} />
-      <Body columns={columns} />
-      <Footer columns={columns} />
-    </table>
+    <div className="dt-wrapper">
+      <table role="grid" className="datatable">
+        {caption.length > 0 ? <caption>{caption}</caption> : null}
+        <Head columns={columns} ordering={ordering} />
+        <Body columns={columns} />
+        <Footer columns={columns} />
+      </table>
+    </div>
   );
 };
 
