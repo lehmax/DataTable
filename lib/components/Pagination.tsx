@@ -43,7 +43,7 @@ const Pagination = () => {
               aria-label="Go to first page"
               aria-disabled={currentPage === 1 ? "true" : "false"}
             >
-              <ChevronsLeft aria-hidden="true" size={16} />
+              <ChevronsLeft aria-hidden="true" />
             </a>
           </li>
           <li>
@@ -56,7 +56,7 @@ const Pagination = () => {
               aria-label="Go to previous page"
               aria-disabled={currentPage === 1 ? "true" : "false"}
             >
-              <ChevronLeft aria-hidden="true" size={16} />
+              <ChevronLeft aria-hidden="true" />
             </a>
           </li>
           {totalPages > 5 && !isFirstPage && (
@@ -80,7 +80,7 @@ const Pagination = () => {
               aria-label="Go to next page"
               aria-disabled={currentPage === totalPages ? "true" : "false"}
             >
-              <ChevronRight aria-hidden="true" size={16} />
+              <ChevronRight aria-hidden="true" />
             </a>
           </li>
           <li>
@@ -93,7 +93,7 @@ const Pagination = () => {
               aria-label="Go to last page"
               aria-disabled={currentPage === totalPages ? "true" : "false"}
             >
-              <ChevronsRight aria-hidden="true" size={16} />
+              <ChevronsRight aria-hidden="true" />
             </a>
           </li>
         </ul>
