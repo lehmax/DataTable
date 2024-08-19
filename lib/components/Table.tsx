@@ -1,6 +1,6 @@
-import { ArrowDown } from "lucide-react";
 import useSort from "../hooks/useSort";
 
+import { ArrowUp } from "lucide-react";
 import { useDataTableContext } from "../hooks/useDataTableContext";
 import "../styles/datatable.scss";
 
@@ -44,7 +44,7 @@ const Head = ({ columns, ordering = true }: HeadProps) => {
               <div>
                 <span role="button">{label}</span>
                 <span>
-                  <ArrowDown size={16} className="order-icon" />
+                  <ArrowUp size={16} className="order-icon" />
                 </span>
               </div>
             </th>
