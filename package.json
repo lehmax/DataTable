@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "lucide": "^0.427.0",
-    "lucide-react": "^0.427.0"
+    "lucide-react": "^0.428.0"
   },
   "peerDependencies": {
     "react": "^18.3.1",
