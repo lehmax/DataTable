@@ -34,9 +34,9 @@
     "build": "tsc --p ./tsconfig.build.json && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "coverage": "vitest run --coverage",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
+    "coverage": "pnpm vitest run --coverage",
+    "test": "pnpm vitest",
+    "test:ui": "pnpm vitest --ui",
     "prepublishOnly": "vite build"
   },
   "dependencies": {
@@ -54,7 +54,7 @@
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.12",
-    "@types/node": "^22.3.0",
+    "@types/node": "^22.4.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -71,7 +71,7 @@
     "sass": "^1.77.8",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.1.0",
-    "vite": "^5.4.0",
+    "vite": "^5.4.1",
     "vite-plugin-dts": "^4.0.3",
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vitest": "^2.0.5"
