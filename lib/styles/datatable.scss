@@ -29,10 +29,6 @@ table.datatable {
     margin: 1rem 0;
   }
 
-  label {
-    margin: 0;
-  }
-
   th,
   td {
     padding: 12px 16px;
@@ -153,6 +149,7 @@ table.datatable {
   label {
     font-size: var(--table-font-size);
     color: var(--color-text);
+    margin: 0;
   }
 }
 
