@@ -20,6 +20,6 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true
   },
-  "include": ["src", "lib", "./vitest.setup.ts", "test/data.ts"],
+  "include": ["demo", "lib", "./vitest.setup.ts", "test/data.ts"],
   "exclude": ["node_modules"]
 }
