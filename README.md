@@ -23,22 +23,8 @@
 
 ## Installation
 
-npm:
-
 ```sh
-npm i @lehmax/datatable
-```
-
-yarn:
-
-```sh
-yarn add @lehmax/datatable
-```
-
-pnpm:
-
-```sh
-pnpm add @lehmax/datatable
+npm add @lehmax/datatable
 ```
 
 ## Usage
