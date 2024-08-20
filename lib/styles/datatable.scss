@@ -90,6 +90,7 @@ table.datatable {
   &[aria-sort="none"] {
     .order-icon {
       opacity: 0;
+      transform: rotate(0deg);
     }
   }
 

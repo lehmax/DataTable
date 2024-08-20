@@ -21,7 +21,7 @@ type HeadProps = {
 };
 
 const Head = ({ columns, ordering = true }: HeadProps) => {
-  const { sortColumn, handleSort } = useSort(columns);
+  const { sortColumn, handleSort } = useSort();
 
   const onClick = (id: string) => {
     handleSort(id);
@@ -37,9 +37,7 @@ const Head = ({ columns, ordering = true }: HeadProps) => {
               role="columnheader"
               key={id}
               onClick={() => onClick(id)}
-              aria-sort={
-                sortColumn.colId === id ? sortColumn.direction : "none"
-              }
+              aria-sort={sortColumn.colId === id ? sortColumn.sort : "none"}
             >
               <div>
                 <span role="button">{label}</span>

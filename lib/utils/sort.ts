@@ -5,11 +5,19 @@ export const sortCollection = (
   key: string,
   order: "ascending" | "descending" = "ascending"
 ) => {
+  console.log(collection);
+
   return [...collection].sort((a, b) => {
-    const valueA = a[key] as string;
-    const valueB = b[key] as string;
+    const valueA = a[key];
+    const valueB = b[key];
 
     if (!valueA && !valueB) return 0;
+
+    if (key === "id") {
+      return order === "ascending"
+        ? parseInt(valueA) - parseInt(valueB)
+        : parseInt(valueB) - parseInt(valueA);
+    }
 
     // Order by date
     if (isValidDate(valueA) && isValidDate(valueB)) {

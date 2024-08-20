@@ -1,4 +1,4 @@
 export type DataType = {
-  id: number;
-  [key: string]: string | number;
+  id: string;
+  [key: string]: string;
 };

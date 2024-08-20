@@ -1,6 +1,5 @@
 import { DataTableProvider } from "../context/DataTableContext";
 import { DataType } from "../types";
-import { sortCollection } from "../utils/sort";
 import Pagination from "./Pagination";
 import Search from "./Search";
 import SelectEntriesPerPage from "./SelectEntriesPerPage";
@@ -27,20 +26,14 @@ const DataTable = ({
   paginate = true,
   entriesPerPage = 10,
 }: DataTableProps) => {
-  let initialData = data;
-
   if (data.length === 0 || columns.length === 0) {
     console.warn("DataTable: Empty data or columns provided.");
     return false;
   }
 
-  if (ordering && columns.length > 0) {
-    initialData = sortCollection(initialData, columns[0].id);
-  }
-
   return (
     <DataTableProvider
-      initialData={initialData}
+      initialData={data}
       entriesPerPage={entriesPerPage}
       paginate={paginate}
     >

@@ -1,35 +1,41 @@
 import { useState } from "react";
-import { Column } from "../components/Table";
 import { sortCollection } from "../utils/sort";
 import { useDataTableContext } from "./useDataTableContext";
 
-type SortDirection = "ascending" | "descending" | "none";
+type SortType = "ascending" | "descending" | "none";
 
 type SortColumn = {
   colId: string;
-  direction: SortDirection;
+  sort: SortType;
 };
 
-const useSort = (columns: Column[]) => {
+const useSort = () => {
   const { setLocalData, localData } = useDataTableContext();
 
-  const firstColumn = columns[0];
   const [sortColumn, setSortColumn] = useState<SortColumn>({
-    colId: localData.length > 0 ? firstColumn.id : "",
-    direction: "ascending",
+    colId: "",
+    sort: "none",
   });
 
   const handleSort = (id: string) => {
-    let direction: SortDirection = "ascending";
+    let sort: SortType = "ascending";
 
-    if (sortColumn.colId === id && sortColumn.direction !== "none") {
-      direction =
-        sortColumn.direction === "ascending" ? "descending" : direction;
+    const isAlreadySorted = sortColumn.colId === id;
+    const isCurrentAsc = isAlreadySorted && sortColumn.sort === "ascending";
+    const isCurrentDsc = isAlreadySorted && sortColumn.sort === "descending";
+
+    if (isCurrentAsc) {
+      sort = "descending";
     }
 
-    setSortColumn({ colId: id, direction });
-    const sortedData = sortCollection(localData, id, direction);
-    setLocalData(sortedData);
+    if (isCurrentDsc) {
+      setSortColumn({ colId: "", sort: "none" });
+      setLocalData(sortCollection(localData, "id"));
+      return;
+    }
+
+    setSortColumn({ colId: id, sort });
+    setLocalData(sortCollection(localData, id, sort));
   };
 
   return { sortColumn, handleSort };
