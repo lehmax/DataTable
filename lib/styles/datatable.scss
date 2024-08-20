@@ -187,35 +187,37 @@ table.datatable {
     @media (width <= 996px) {
       flex-wrap: wrap;
     }
+  }
 
-    a {
-      box-sizing: border-box;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--color-border-grey);
-      border-radius: 50%;
-      padding: 8px;
-      font-size: 0.875rem;
-      color: var(--color-text);
-      text-decoration: none;
-      font-weight: 500;
+  .dt-pagination-button {
+    box-sizing: border-box;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border-grey);
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 0.875rem;
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    background-color: transparent;
+    cursor: pointer;
 
-      &[aria-current="page"] {
-        background-color: var(--color-primary);
-        color: var(--color-white);
-      }
+    &[aria-current="page"] {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
 
-      &[aria-disabled="true"] {
-        pointer-events: none;
-        color: var(--color-border-grey);
-      }
+    &[disabled] {
+      pointer-events: none;
+      color: var(--color-border-grey);
+    }
 
-      &:hover {
-        background-color: var(--color-hover);
-      }
+    &:hover:not([aria-current="page"]) {
+      background-color: var(--color-hover);
     }
   }
 }

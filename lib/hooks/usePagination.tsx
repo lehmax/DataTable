@@ -38,17 +38,14 @@ const usePagination = (
     { length: endPageBtn - startPageBtn + 1 },
     (_, index) => (
       <li key={startPageBtn + index}>
-        <a
-          href="#"
+        <button
+          className="dt-pagination-button"
           aria-current={currentPage === startPageBtn + index ? "page" : false}
           aria-label={`Go to page ${startPageBtn + index}`}
-          onClick={(event) => {
-            event.preventDefault();
-            setCurrentPage(startPageBtn + index);
-          }}
+          onClick={() => setCurrentPage(startPageBtn + index)}
         >
           {startPageBtn + index}
-        </a>
+        </button>
       </li>
     )
   );

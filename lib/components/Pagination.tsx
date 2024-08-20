@@ -19,8 +19,10 @@ const Pagination = () => {
     paginationButtons,
   } = pagination;
   const { start, end, total } = paginationInformations;
-  const isDotBegin = totalPages > 5 && currentPage > 3;
-  const isDotEnd = totalPages > 5 && currentPage < totalPages - 2;
+  const isDotsBeforePages = totalPages > 5 && currentPage > 3;
+  const isDotsAfterPages = totalPages > 5 && currentPage < totalPages - 2;
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
 
   return (
     <div className="dt-pagination">
@@ -34,67 +36,55 @@ const Pagination = () => {
       >
         <ul>
           <li>
-            <a
-              href="#first"
-              onClick={(event) => {
-                event.preventDefault();
-                firstPage();
-              }}
+            <button
+              className="dt-pagination-button"
+              onClick={firstPage}
               aria-label="Go to first page"
-              aria-disabled={currentPage === 1 ? "true" : "false"}
+              disabled={isFirstPage}
             >
               <ChevronsLeft aria-hidden="true" />
-            </a>
+            </button>
           </li>
           <li>
-            <a
-              href="#previous"
-              onClick={(event) => {
-                event.preventDefault();
-                prevPage();
-              }}
+            <button
+              className="dt-pagination-button"
+              onClick={prevPage}
               aria-label="Go to previous page"
-              aria-disabled={currentPage === 1 ? "true" : "false"}
+              disabled={isFirstPage}
             >
               <ChevronLeft aria-hidden="true" />
-            </a>
+            </button>
           </li>
-          {isDotBegin && (
+          {isDotsBeforePages && (
             <li>
               <span>...</span>
             </li>
           )}
           {paginationButtons}
-          {isDotEnd && (
+          {isDotsAfterPages && (
             <li>
               <span>...</span>
             </li>
           )}
           <li>
-            <a
-              href="#next"
-              onClick={(event) => {
-                event.preventDefault();
-                nextPage();
-              }}
+            <button
+              className="dt-pagination-button"
+              onClick={nextPage}
               aria-label="Go to next page"
-              aria-disabled={currentPage === totalPages ? "true" : "false"}
+              disabled={isLastPage}
             >
               <ChevronRight aria-hidden="true" />
-            </a>
+            </button>
           </li>
           <li>
-            <a
-              href="#last"
-              onClick={(event) => {
-                event.preventDefault();
-                lastPage();
-              }}
+            <button
+              className="dt-pagination-button"
+              onClick={lastPage}
               aria-label="Go to last page"
-              aria-disabled={currentPage === totalPages ? "true" : "false"}
+              disabled={isLastPage}
             >
               <ChevronsRight aria-hidden="true" />
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
