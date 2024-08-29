@@ -5,8 +5,6 @@ export const sortCollection = (
   key: string,
   order: "ascending" | "descending" = "ascending"
 ) => {
-  console.log(collection);
-
   return [...collection].sort((a, b) => {
     const valueA = a[key];
     const valueB = b[key];
