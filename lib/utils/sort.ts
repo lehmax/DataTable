@@ -10,6 +10,8 @@ export const sortCollection = (
     const valueB = b[key];
 
     if (!valueA && !valueB) return 0;
+    if (!valueA) return order === "ascending" ? 1 : -1;
+    if (!valueB) return order === "ascending" ? -1 : 1;
 
     if (key === "id") {
       return order === "ascending"
@@ -18,18 +20,58 @@ export const sortCollection = (
     }
 
     // Order by date
-    if (isValidDate(valueA) && isValidDate(valueB)) {
+    const dateA = parseDate(valueA);
+    const dateB = parseDate(valueB);
+    if (dateA && dateB) {
       return order === "ascending"
-        ? new Date(valueA).getTime() - new Date(valueB).getTime()
-        : new Date(valueB).getTime() - new Date(valueA).getTime();
+        ? dateA.getTime() - dateB.getTime()
+        : dateB.getTime() - dateA.getTime();
     }
 
-    return order === "ascending"
-      ? valueA.localeCompare(valueB, "en")
-      : valueB.localeCompare(valueA, "en");
+    if (!dateA && dateB) {
+      return order === "ascending" ? 1 : -1;
+    }
+
+    if (dateA && !dateB) {
+      return order === "ascending" ? -1 : 1;
+    }
+
+    if (!dateA && !dateB) {
+      return order === "ascending"
+        ? valueA.localeCompare(valueB)
+        : valueB.localeCompare(valueA);
+    }
+
+    return 0;
   });
 };
 
-const isValidDate = (date: string) => {
-  return !isNaN(Date.parse(date));
+const parseDate = (dateStr: string): Date | null => {
+  const regexes = [
+    {
+      regex: /^(\d{4})[-/](\d{2})[-/](\d{2})$/, // yyyy-mm-dd or yyyy/mm/dd
+      order: ["year", "month", "day"],
+    },
+    {
+      regex: /^(\d{2})[-/](\d{2})[-/](\d{4})$/, // mm-dd-yyyy or mm/dd/yyyy
+      order: ["day", "month", "year"],
+    },
+  ];
+
+  for (const { regex, order } of regexes) {
+    const match = dateStr.match(regex);
+    if (match) {
+      const dateParts: { [key: string]: number } = {};
+
+      order.forEach((key, index) => {
+        dateParts[key] = parseInt(match[index + 1]);
+      });
+
+      dateParts["month"] -= 1; // 0-based month index for Date object constructor
+
+      return new Date(dateParts["year"], dateParts["month"], dateParts["day"]);
+    }
+  }
+
+  return null;
 };
