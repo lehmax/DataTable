@@ -17,7 +17,7 @@ const Search = ({ columns }: SearchProps) => {
         placeholder="Search"
         name="search"
         id={id}
-        role="search"
+        aria-label="Search"
         className="dt-searchinput"
         onChange={(event) => search(event.target.value)}
       />

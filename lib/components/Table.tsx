@@ -35,6 +35,7 @@ const Head = ({ columns, ordering = true }: HeadProps) => {
             <th
               className="dt-orderable"
               role="columnheader"
+              data-testid={id}
               key={id}
               onClick={() => onClick(id)}
               aria-sort={sortColumn.colId === id ? sortColumn.sort : "none"}
@@ -47,7 +48,9 @@ const Head = ({ columns, ordering = true }: HeadProps) => {
               </div>
             </th>
           ) : (
-            <th key={id}>{label}</th>
+            <th role="columnheader" key={id}>
+              {label}
+            </th>
           );
         })}
       </tr>

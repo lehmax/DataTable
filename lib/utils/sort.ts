@@ -1,4 +1,5 @@
 import { DataType } from "../types";
+import { parseDate } from "./date";
 
 export const sortCollection = (
   collection: DataType[],
@@ -10,7 +11,8 @@ export const sortCollection = (
     const valueB = b[key];
 
     if (!valueA && !valueB) return 0;
-    if (!valueA) return order === "ascending" ? 1 : -1;
+
+    // Put empty values at the asc: end, desc: start
     if (!valueB) return order === "ascending" ? -1 : 1;
 
     if (key === "id") {
@@ -22,17 +24,14 @@ export const sortCollection = (
     // Order by date
     const dateA = parseDate(valueA);
     const dateB = parseDate(valueB);
+
     if (dateA && dateB) {
       return order === "ascending"
         ? dateA.getTime() - dateB.getTime()
         : dateB.getTime() - dateA.getTime();
     }
 
-    if (!dateA && dateB) {
-      return order === "ascending" ? 1 : -1;
-    }
-
-    if (dateA && !dateB) {
+    if (!dateB && dateA) {
       return order === "ascending" ? -1 : 1;
     }
 
@@ -44,34 +43,4 @@ export const sortCollection = (
 
     return 0;
   });
-};
-
-const parseDate = (dateStr: string): Date | null => {
-  const regexes = [
-    {
-      regex: /^(\d{4})[-/](\d{2})[-/](\d{2})$/, // yyyy-mm-dd or yyyy/mm/dd
-      order: ["year", "month", "day"],
-    },
-    {
-      regex: /^(\d{2})[-/](\d{2})[-/](\d{4})$/, // mm-dd-yyyy or mm/dd/yyyy
-      order: ["day", "month", "year"],
-    },
-  ];
-
-  for (const { regex, order } of regexes) {
-    const match = dateStr.match(regex);
-    if (match) {
-      const dateParts: { [key: string]: number } = {};
-
-      order.forEach((key, index) => {
-        dateParts[key] = parseInt(match[index + 1]);
-      });
-
-      dateParts["month"] -= 1; // 0-based month index for Date object constructor
-
-      return new Date(dateParts["year"], dateParts["month"], dateParts["day"]);
-    }
-  }
-
-  return null;
 };

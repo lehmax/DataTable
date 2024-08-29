@@ -4,8 +4,8 @@ import { DataType } from "../types";
 
 type DataTableProviderProps = {
   initialData: DataType[];
-  entriesPerPage: number;
-  paginate: boolean;
+  entriesPerPage?: number;
+  paginate?: boolean;
   children: React.ReactNode;
 };
 
@@ -63,8 +63,8 @@ export const DataTableContext = createContext<DataTableContextType>({
 
 export const DataTableProvider = ({
   initialData = [],
-  entriesPerPage,
-  paginate,
+  entriesPerPage = 10,
+  paginate = true,
   children,
 }: DataTableProviderProps) => {
   const [localData, setLocalData] = useState(initialData);
