@@ -89,7 +89,7 @@ importers:
         version: 5.4.1(@types/node@22.4.1)(sass@1.77.8)
       vite-plugin-dts:
         specifier: ^4.0.3
-        version: 4.0.3(@types/node@22.4.1)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.1(@types/node@22.4.1)(sass@1.77.8))
+        version: 4.1.0(@types/node@22.4.1)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.1(@types/node@22.4.1)(sass@1.77.8))
       vite-plugin-lib-inject-css:
         specifier: ^2.1.1
         version: 2.1.1(vite@5.4.1(@types/node@22.4.1)(sass@1.77.8))
@@ -999,7 +999,7 @@ packages:
     resolution: {integrity: sha512-7CEBgcMjVmitjYo5q8JTJVra6X5mQ20uTThdK+0kR7UEaDrAWEQcRiBtWJzga4eRpP6afNwwLsX2SET2JhVB1Q==}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   confbox@0.1.7:
     resolution: {integrity: sha512-uJcB/FKZtBMCJpK8MQji6bJHgu1tixKPxRLeGkNzBoOZzpnZUJm0jm2/sBDWcuBx1dYgxV4JU+g5hmNxCyAmdA==}
@@ -1996,8 +1996,8 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  vite-plugin-dts@4.0.3:
-    resolution: {integrity: sha512-+xnTsaONwU2kV6zhRjtbRJSGN41uFR/whqmcb4k4fftLFDJElxthp0PP5Fq8gMeM9ytWMt1yk5gGgekLREWYQQ==}
+  vite-plugin-dts@4.1.0:
+    resolution: {integrity: sha512-sRlmt9k2q8MrX4F2058N3KmB6WyJ3Ao6QaExOv1X99F3j0GhPziEz1zscWQ1q2r1PeFc96L7GIUu8Pl2DPr2Hg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
@@ -4081,7 +4081,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-dts@4.0.3(@types/node@22.4.1)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.1(@types/node@22.4.1)(sass@1.77.8)):
+  vite-plugin-dts@4.1.0(@types/node@22.4.1)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.1(@types/node@22.4.1)(sass@1.77.8)):
     dependencies:
       '@microsoft/api-extractor': 7.47.4(@types/node@22.4.1)
       '@rollup/pluginutils': 5.1.0(rollup@4.21.0)
