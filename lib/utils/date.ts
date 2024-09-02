@@ -10,7 +10,7 @@ export const parseDate = (dateStr: string): Date | null => {
       order: ["year", "month", "day"],
     },
     {
-      regex: /^(\d{2})[-/](\d{2})[-/](\d{4})$/, // mm-dd-yyyy or mm/dd/yyyy
+      regex: /^(\d{2})[-/](\d{2})[-/](\d{4})$/, //dd-mm-yyyy or dd/mm/yyyy
       order: ["day", "month", "year"],
     },
   ];
