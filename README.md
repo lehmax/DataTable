@@ -15,6 +15,8 @@
   </a>
 </p>
 
+
+
 > ! Note: This project is not ready for production use. !
 
 ## Introduction
@@ -22,21 +24,12 @@
 `DataTable` is a simple table component for React with search, pagination, and ordering features.
 
 ## Installation
-
-npm:
-
 ```sh
 npm i @lehmax/datatable
 ```
-
-yarn:
-
 ```sh
 yarn add @lehmax/datatable
 ```
-
-pnpm:
-
 ```sh
 pnpm add @lehmax/datatable
 ```
@@ -79,6 +72,23 @@ import DataTable from "@lehmax/datatable";
   ordering={false}
 />;
 ```
+
+### Props
+
+| **Property**       | **Type** |**Default**   | **Required** | **Description**                                                                                  |
+|--------------------|--------------------|------------------|--------------|-------------------------------------------------------------------------------------------|
+| `title`            | `string`           |                 | No           | The title of the data table.                                                                         |
+| `data`             | `array of objects` |                  | Yes          | The data to display in the table. Each object should have an `id` field and dynamic keys.            |
+| `data[].id`        | `string`           |                  | Yes          | The unique identifier for each data entry.                                                          |                                                      |
+| `columns`          | `array of objects` |                 | Yes          | The columns to display in the table. Each object should have a `label` and an `id`.                 |
+| `columns[].label`  | `string`           |                  | Yes          | The label of the column to display in the table header.                                              |
+| `columns[].id`     | `string`           |                 | Yes          | The identifier corresponding to the key in the data object.                                          |
+| `searchColumns`    | `string[]` or `"all"` |   `"all"`          | No           | The columns to search on. `"all"` searches across all columns.                                       |
+| `ordering`         | `boolean` | `true`                         | No           | If `true`, enables column sorting.                                                                   |
+| `search`           | `boolean`  | `true`                            | No           | If `true`, enables search functionality in the table.                                                |
+| `paginate`         | `boolean` |  `true`                           | No           | If `true`, enables pagination of the data in the table.                                              |
+| `entriesPerPage`   | `number`   |  `10`                   | No           | Number of entries per page if pagination is enabled.                                                 |
+
 
 ## License
 
