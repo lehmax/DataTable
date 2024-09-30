@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       lucide:
-        specifier: ^0.428.0
-        version: 0.428.0
+        specifier: ^0.446.0
+        version: 0.446.0
       lucide-react:
         specifier: ^0.428.0
         version: 0.428.0(react@18.3.1)
@@ -999,7 +999,7 @@ packages:
     resolution: {integrity: sha512-7CEBgcMjVmitjYo5q8JTJVra6X5mQ20uTThdK+0kR7UEaDrAWEQcRiBtWJzga4eRpP6afNwwLsX2SET2JhVB1Q==}
 
   concat-map@0.0.1:
-    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   confbox@0.1.7:
     resolution: {integrity: sha512-uJcB/FKZtBMCJpK8MQji6bJHgu1tixKPxRLeGkNzBoOZzpnZUJm0jm2/sBDWcuBx1dYgxV4JU+g5hmNxCyAmdA==}
@@ -1505,8 +1505,8 @@ packages:
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
-  lucide@0.428.0:
-    resolution: {integrity: sha512-VSWG1+xQc+fZhkWlIIub4knnvtZEtVmQEtJ8Nj+bYW6xYHcq+AbcWK1wekQh85cfcy7vuYm0fVOLPN79TZ83kQ==}
+  lucide@0.446.0:
+    resolution: {integrity: sha512-oRSbYPYWkDLB7WRhR6shRMTB/zd/E+UzwMqpqiSFjvGLwUQnd1Sk70i675MGfg9agwXdFqzEbgyTCGMg36vfGQ==}
 
   lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
@@ -3631,7 +3631,7 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  lucide@0.428.0: {}
+  lucide@0.446.0: {}
 
   lz-string@1.5.0: {}
 
